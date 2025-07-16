@@ -16,8 +16,16 @@
     header {
       background-color: #f5e9d5; /* سكري */
       padding: 20px;
-      text-align: center;
       border-bottom: 2px solid #e0d4b7;
+      position: relative;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    nav {
+      margin-top: 10px;
     }
 
     nav a {
@@ -31,20 +39,91 @@
     nav a:hover {
       color: #a67c52;
     }
+
+    /* زر قائمة البرغر */
+    .burger {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: #5a4a3c;
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+
+    /* القائمة المنسدلة للجوال */
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      background-color: #f5e9d5;
+      padding: 10px 0;
+    }
+
+    .mobile-nav a {
+      padding: 10px 0;
+      border-top: 1px solid #e0d4b7;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>حجوزات السعودية</h1>
-  <nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="#hotels">الفنادق</a>
-    <a href="#restaurants">المطاعم</a>
-    <a href="about.html" target="_blank">من نحن</a> <!-- تم التعديل هنا -->
-    <a href="#contact">اتصل بنا</a>
-  </nav>
-</header>
+  <header>
+    <h1>حجوزات السعودية</h1>
+
+    <!-- زر القائمة (برغر) -->
+    <div class="burger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- قائمة سطح المكتب -->
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <a href="#hotels">الفنادق</a>
+      <a href="#restaurants">المطاعم</a>
+      <a href="about.html" target="_blank">من نحن</a>
+      <a href="#contact">اتصل بنا</a>
+    </nav>
+
+    <!-- قائمة الجوال -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">الرئيسية</a>
+      <a href="#hotels">الفنادق</a>
+      <a href="#restaurants">المطاعم</a>
+      <a href="about.html" target="_blank">من نحن</a>
+      <a href="#contact">اتصل بنا</a>
+    </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileNav');
+      menu.classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>
