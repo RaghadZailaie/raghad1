@@ -2,15 +2,55 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>حجوزات السعودية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
-      font-family: 'Cairo', sans-serif;
       margin: 0;
-      background-color: #fdfbf7; /* أوف وايت */
+      font-family: 'Cairo', sans-serif;
+      background-color: #fdfbf7;
       color: #3e3e3e;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                  url('OIP.ppp.jpg') center/cover no-repeat;
+      height: 250px;
+      color: white;
+      text-align: center;
+      position: relative;
+      padding: 30px 15px;
+      border-bottom: 3px solid #e0d4b7;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+      text-shadow: 1px 1px 3px #00000066;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a i {
+      margin-left: 6px;
+      color: #f5e9d5;
+    }
+
+    nav a:hover {
+      color: #f5e9d5;
     }
 
     .section {
@@ -18,121 +58,141 @@
       text-align: center;
     }
 
+    .section h2 {
+      font-size: 28px;
+      color: #4b3e2c;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
     .card {
       background-color: #ffffff;
-      border: 1px solid #e0d4b7;
+      border: 2px solid #e0d4b7;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 280px;
       padding: 20px;
-      margin: 20px auto;
-      max-width: 500px;
-      transition: transform 0.3s;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .card:hover {
-      transform: scale(1.02);
-    }
-
-    button {
-      background-color: #d5b99c;
-      border: none;
-      color: white;
-      padding: 10px 20px;
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
       border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #5a4a35;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #666;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .book-btn {
+      background-color: #d9b38c;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    button:hover {
-      background-color: #b49477;
+    .book-btn:hover {
+      background-color: #c79c76;
     }
 
-    a {
-      color: #5a4a3c;
+    footer {
+      background-color: #e0d4b7;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #5a4a35;
+      margin-top: 40px;
     }
 
-    a:hover {
-      color: #a67c52;
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ الشريط العلوي يتم تحميله من header.html -->
-  <div id="header"></div>
+  <header>
+    <h1>حجوزات السعودية</h1>
+    <nav>
+      <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="#hotels"><i class="fas fa-hotel"></i> الفنادق</a>
+      <a href="#restaurants"><i class="fas fa-utensils"></i> المطاعم</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a>
+      <a href="about.html"><i class="fas fa-envelope"></i> اتصل بنا</a>
+    </nav>
+  </header>
 
   <!-- قسم الفنادق -->
   <section class="section" id="hotels">
-    <h2>فنادق مميزة</h2>
-    <div class="card">
-      <h3>فندق النخبة - الرياض</h3>
-      <p>فندق خمس نجوم بخدمة راقية وموقع ممتاز.</p>
-      <button onclick="book('فندق النخبة')">احجز الآن</button>
+    <h2>أشهر الفنادق</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x160?text=فندق+الرياض" alt="فندق الرياض">
+        <h3>فندق الرياض الدولي</h3>
+        <p>موقع مميز وسط العاصمة، قريب من المعالم السياحية والخدمات.</p>
+        <button class="book-btn">احجز الآن</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x160?text=فندق+جدة" alt="فندق جدة">
+        <h3>فندق البحر الأحمر - جدة</h3>
+        <p>إطلالة بحرية ساحرة، وخدمات فندقية من فئة 5 نجوم.</p>
+        <button class="book-btn">احجز الآن</button>
+      </div>
     </div>
   </section>
 
   <!-- قسم المطاعم -->
   <section class="section" id="restaurants">
-    <h2>مطاعم فاخرة</h2>
-    <div class="card">
-      <h3>مطعم الذواقة - جدة</h3>
-      <p>أشهى الأطباق الشرقية والعالمية.</p>
-      <button onclick="book('مطعم الذواقة')">احجز الآن</button>
+    <h2>أفضل المطاعم</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x160?text=مطعم+شرقي" alt="مطعم شرقي">
+        <h3>مطعم البستان</h3>
+        <p>أطباق شرقية أصيلة في جو تقليدي راقٍ بمدينة الدمام.</p>
+        <button class="book-btn">احجز الآن</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x160?text=مطعم+حديث" alt="مطعم حديث">
+        <h3>مطعم فيوجن</h3>
+        <p>تجربة طعام فاخرة تجمع بين المطبخ الآسيوي والإيطالي بالرياض.</p>
+        <button class="book-btn">احجز الآن</button>
+      </div>
     </div>
   </section>
 
-  <!-- قسم التواصل -->
-  <section class="section" id="contact">
-    <h2>اتصل بنا</h2>
-    <p>راسلنا على: <a href="mailto:info@saudi-booking.com">info@saudi-booking.com</a></p>
-  </section>
-
-  <!-- ✅ الشريط السفلي يتم تحميله من footer.html -->
-  <div id="footer"></div>
-
-  <!-- ✅ استدعاء ملفات الهيدر والفوتر -->
-  <script>
-    function loadComponent(id, file) {
-      fetch(file)
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById(id).innerHTML = data;
-
-          // ✅ عند تحميل الهيدر، تأكد من تفعيل قائمة الجوال
-          if (id === 'header') {
-            setupBurgerMenu(); // استدعاء تفعيل القائمة
-          }
-        });
-    }
-
-    function book(name) {
-      alert("تم استلام طلب الحجز لـ: " + name + ". سيتم التواصل معك قريباً.");
-    }
-
-    // ✅ تفعيل قائمة البرغر بعد تحميل الهيدر
-    function setupBurgerMenu() {
-      const burger = document.querySelector(".burger");
-      const mobileNav = document.querySelector(".mobile-nav");
-
-      if (burger && mobileNav) {
-        burger.addEventListener("click", () => {
-          mobileNav.classList.toggle("show");
-        });
-
-        // اختياري: إغلاق القائمة بعد اختيار رابط
-        const links = mobileNav.querySelectorAll("a");
-        links.forEach(link => {
-          link.addEventListener("click", () => {
-            mobileNav.classList.remove("show");
-          });
-        });
-      }
-    }
-
-    // استدعاء ملفات الشريط العلوي والسفلي
-    loadComponent("header", "header.html");
-    loadComponent("footer", "footer.html");
-  </script>
+  <!-- الشريط السفلي -->
+  <footer>
+    &copy; 2025 حجوزات السعودية - جميع الحقوق محفوظة
+  </footer>
 
 </body>
 </html>
