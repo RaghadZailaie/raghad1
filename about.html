@@ -2,133 +2,81 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <title>حول الموقع</title>
+  <title>من نحن - حجوزات السعودية</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Cairo', sans-serif;
       background-color: #fdfbf7;
-      padding: 20px;
+      color: #3e3e3e;
       margin: 0;
-      color: #333;
+      padding: 0;
     }
 
-    .form-container {
+    header {
+      background-color: #d9b38c;
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
       background-color: #fff;
       border: 1px solid #e0d4b7;
       border-radius: 12px;
-      padding: 25px;
-      max-width: 500px;
-      margin: 40px auto;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-align: center;
     }
 
-    h2 {
-      text-align: center;
+    .about-container h2 {
+      font-size: 28px;
+      color: #5a4a35;
       margin-bottom: 20px;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 16px;
+    .about-container p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #444;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #d9b38c;
-      color: #fff;
-      border: none;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background-color: #c79c76;
-    }
-
-    .message {
-      margin-top: 15px;
+    footer {
+      background-color: #e0d4b7;
+      padding: 20px;
       text-align: center;
-      font-weight: bold;
-      color: green;
+      font-size: 14px;
+      color: #5a4a35;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
-    <h2>راسلنا</h2>
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="الاسم" required />
-      <input type="email" id="email" placeholder="البريد الإلكتروني" required />
-      <textarea id="message" placeholder="رسالتك" required></textarea>
-      <button type="submit">إرسال</button>
-      <div class="message" id="statusMessage"></div>
-    </form>
+  <header>
+    <h1>من نحن</h1>
+  </header>
+
+  <div class="about-container">
+    <h2>مشروع حجوزات السعودية</h2>
+    <p>
+      "حجوزات السعودية" هو موقع إلكتروني مبتكر يهدف إلى تسهيل تجربة المستخدم في استعراض وحجز أفضل الفنادق والمطاعم في مختلف مناطق المملكة.<br><br>
+      نقدم لك معلومات دقيقة، وصورًا واقعية، وتجربة حجز سهلة وآمنة عبر واجهة عربية مصممة بعناية.<br><br>
+      هدفنا هو أن نكون دليلك الأول لحجز الإقامة وتناول الطعام في السعودية، بخيارات متنوعة ترضي كل الأذواق.
+    </p>
   </div>
 
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
-  <script>
-    // ✅ إعداد Firebase لمشروع contact-form-saudi1
-    const firebaseConfig = {
-      apiKey: "AIzaSyD1amEFMcVeXVhqtZVSRDcn8p_yGBrs4BY",
-      authDomain: "contact-form-saudi1.firebaseapp.com",
-      databaseURL: "https://contact-form-saudi1-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "contact-form-saudi1",
-      storageBucket: "contact-form-saudi1.firebasestorage.app",
-      messagingSenderId: "518009708391",
-      appId: "1:518009708391:web:7cb58b0d798bf6481319c2",
-      measurementId: "G-8VRY4X6ZWF"
-    };
-
-    // تهيئة Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-
-    // إرسال البيانات عند الضغط على زر الإرسال
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-      const status = document.getElementById("statusMessage");
-
-      if (!name || !email || !message) {
-        alert("يرجى تعبئة جميع الحقول.");
-        return;
-      }
-
-      db.ref("messages").push({
-        name,
-        email,
-        message,
-        timestamp: new Date().toISOString()
-      }).then(() => {
-        status.textContent = "تم الإرسال بنجاح!";
-        document.getElementById("contactForm").reset();
-      }).catch((error) => {
-        status.textContent = "حدث خطأ، حاول مرة أخرى.";
-        console.error("Firebase Error:", error);
-      });
-    });
-  </script>
+  <footer>
+    &copy; 2025 حجوزات السعودية - جميع الحقوق محفوظة
+  </footer>
 
 </body>
 </html>
